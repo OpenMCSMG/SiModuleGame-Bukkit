@@ -1,0 +1,12 @@
+gift: # 礼物事件
+  463: # 根据你平台的礼物唯一信息放这里触发
+    - "bfunc: simpleLayer,%gift-num%"  # bfunc: 方法名字,方法参数可使用papi变量
+chat: # 聊天事件
+  "你好": # 根据你平台的聊天信息放这里触发
+    - "bfunc: chatFunc"  # bfunc: 方法名字,方法参数可使用papi变量
+like: # 点赞事件
+  - "bfunc: 累计,%like-num%"  # bfunc:
+member: # 进入
+  - "title：欢迎|%player%|20|40|10" # title: 标题,%player%: 玩家名字
+social: # 关注
+  - "command: 6[x]say 感谢%user%的关注"

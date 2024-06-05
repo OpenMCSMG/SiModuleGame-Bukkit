@@ -1,0 +1,18 @@
+﻿{
+    "room": {
+        "owner": "主播名字",
+        "id": "主播房号"
+    },
+    "user": {
+        "name": "观众",
+        "id": "观众id",
+        "headUrl": "头像地址"
+    },
+    "type": "gift",
+    "data": {
+        "gift_id": "123",
+        "gift_name": "礼物名字",
+        "gift_price": "礼物价格元单位",
+        "gift_count": 100
+    }
+}

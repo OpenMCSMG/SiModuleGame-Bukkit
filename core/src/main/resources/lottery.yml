@@ -1,0 +1,153 @@
+# probability 概率
+box:
+  原神:
+    - "group: 原神启动"
+    - "group: 原神退出"
+  王者荣耀:
+    - "group: 王者荣耀启动"
+    - "group: 王者荣耀退出"
+  TNT盲盒:
+    - "group: TNT盲盒奖品1"
+    - "group: TNT盲盒奖品2"
+    - "group: TNT盲盒奖品3"
+    - "group: TNT盲盒奖品4"
+    - "group: TNT盲盒奖品5"
+    - "group: TNT盲盒奖品6"
+    - "group: TNT盲盒奖品7"
+    - "group: TNT盲盒奖品8"
+    - "group: TNT盲盒奖品9"
+    - "group: TNT盲盒奖品10"
+    - "group: TNT盲盒奖品11"
+    - "group: TNT盲盒奖品12"
+    - "group: TNT盲盒奖品13"
+    - "group: TNT盲盒奖品14"
+    - "group: TNT盲盒奖品15"
+    - "group: TNT盲盒奖品16"
+    - "group: TNT盲盒奖品17"
+    - "group: TNT盲盒奖品18"
+    - "group: TNT盲盒奖品19"
+    - "group: TNT盲盒奖品20"
+    - "group: TNT盲盒奖品21"
+    - "group: TNT盲盒奖品22"
+    - "group: TNT盲盒奖品23"
+    - "group: TNT盲盒奖品24"
+    - "group: TNT盲盒奖品25"
+# 瞎写的反正就是这里写的是和game一样的关键词触发
+group:
+  王者荣耀启动:
+    - "title: 王者荣耀启动|6666|0|20|0"
+    - "command: say /usr/bin/open-a /Applications/WeChat.app"
+  王者荣耀退出:
+    - "title: 王者荣耀退出|6666|0|20|0"
+    - "command: kill %play_name%"
+  原神启动:
+    - "title: 原神启动|6666|0|20|0"
+    - "command: say /usr/bin/open-a /Applications/WeChat.app"
+  原神退出:
+    - "title: 原神退出|6666|0|20|0"
+    - "command: kill %play_name%"
+  TNT盲盒奖品1:
+    - "command: summon luckytntmod:primed_tnt_firework"
+    - "title:TNT盲盒触发!"
+    - "command: summon luckytntmod:primed_tnt_firework"
+    - "delay: 20"
+    - "command: summon luckytntmod:primed_tnt_firework"
+  TNT盲盒奖品2:
+    - "command: summon luckytntmod:primed_rainbow_firework"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_rainbow_firework"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_rainbow_firework"
+    - "title:TNT盲盒触发!"
+  TNT盲盒奖品3:
+    - "command: summon luckytntmod:primed_city_firework"
+    - "title:TNT盲盒触发!"
+  TNT盲盒奖品4:
+    - "command: summon luckytntmod:primed_meteor_shower"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_meteor_shower"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_meteor_shower"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_meteor_shower"
+  TNT盲盒奖品5:
+    - "command: summon luckytntmod:primed_nuclear_waste_tnt"
+  TNT盲盒奖品6:
+    - "command: summon luckytntmod:primed_new_years_firework"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_new_years_firework"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_new_years_firework"
+  TNT盲盒奖品7:
+    - "command: summon luckytntmod:primed_jumping_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_jumping_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_jumping_tnt"
+  TNT盲盒奖品8:
+    - "command: summon luckytntmod:primed_erupting_tnt"
+    - "delay:3"
+    - "command: summon luckytntmod:primed_erupting_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_erupting_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_erupting_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_erupting_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_erupting_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_erupting_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_erupting_tnt"
+  TNT盲盒奖品9:
+    - "command: summon luckytntmod:primed_nuclear_tnt"
+  TNT盲盒奖品10:
+    - "command: summon luckytntmod:primed_fire_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_fire_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_fire_tnt"
+  TNT盲盒奖品11:
+    - "command: summon luckytntmod:primed_spamming_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_spamming_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_spamming_tnt"
+  TNT盲盒奖品12:
+    - "command: summon luckytntmod:primed_air_strike"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_air_strike"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_air_strike"
+  TNT盲盒奖品13:
+    - "command: summon luckytntmod:primed_withering_tnt"
+    - "command: summon luckytntmod:primed_withering_tnt"
+    - "delay:20"
+    - "command: summon luckytntmod:primed_withering_tnt"
+  TNT盲盒奖品14:
+    - "command: summon luckytntmod:primed_the_revolution"
+  TNT盲盒奖品15:
+    - "command: summon luckytntmod:primed_hexahedron"
+  TNT盲盒奖品16:
+    - "command: summon luckytntmod:primed_giant_tnt"
+  TNT盲盒奖品17:
+    - "command: summon luckytntmod:primed_entity_firework"
+  TNT盲盒奖品18:
+    - "command: summon luckytntmod:primed_lightning_storm"
+  TNT盲盒奖品19:
+    - "command: summon luckytntmod:primed_tnt_rain"
+  TNT盲盒奖品20:
+    - "command: summon luckytntmod:primed_midas_tnt"
+  TNT盲盒奖品21:
+    - "command: summon luckytntmod:primed_stone_cold"
+  TNT盲盒奖品22:
+    - "command: summon luckytntmod:primed_reverse_tnt"
+  TNT盲盒奖品23:
+    - "command: summon luckytntmod:primed_angry_miners"
+  TNT盲盒奖品24:
+    - "command: summon luckytntmod:primed_angry_miners"
+  TNT盲盒奖品25:
+    - "command: summon luckytntmod:primed_drilling_tnt"
+
+
