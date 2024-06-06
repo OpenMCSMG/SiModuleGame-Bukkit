@@ -3,7 +3,7 @@ import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
 val group = "cn.nostmc.pixgame"
-version = "24.6.8"
+version = "24.6.9"
 
 bukkit {
     name = "SiModuleGame"
@@ -101,7 +101,7 @@ fun uploadTo(shadowJarFile: File) {
     initToken.requestMethod = "GET"
     initToken.setRequestProperty(
         "Authorization",
-        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMyIsImV4cCI6MTcxNzQ4NTU2NCwiaWF0IjoxNzE2ODgwNzY0fQ.jiz97V_UcvshpVaY-Xvm_dBb8yuMJFmMmtGHBdIsTxp4GNl6WHz6kflFuf8SuduAdg8HTJ-qtX382-uW1TNQ6fk0pXSNl5MfawhSYJbb4CbFaFNLmHG20QDZ1z2NJ5JYCQOvvuEya1qq_nDYD95YbHST_0LdtTar88o2yYQLvDnQ5qsjFJ1T21-uzcXVyjPm3AOUWAZMJuJz_r6cC_TwSJNSoYutJO_h_oJp0T4hiOsc5r4LDwXWLf9-8qNrGJVoVpHFjWB7-iMEeTrpbxdK-G-PjJRsIGw13wRtkTwnJOy4Fj7j8YzwRY2xfhsOB6QAZuCwmB3a3KIrp7wn4ppfrA"
+        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcxNzgyNzQ4NywiaWF0IjoxNzE3MjIyNjg3fQ.XNHeWsbazjqWNhgGiN5hf6fk5b5adxFTta_C51t_JD8SivRnKZ22X4ASoPPjv4T72UzCh9CsmT4AR01zeGASyKchRhRK5hymzQN3jhKHcPbDOR3Y4abxy8r6uxcctmHXGpdTeQpXI-Cot3hxdLCcJFdHANYC1OMULdx6UZLQjWjNyPYXaA_sldBrPTHVFG99dgjh8hs3X2XsMhVr4AWlGZPtZLZ9R4Clr3Eo72GBLmPrytzZJc0CIjAvMBFqaxYSsrMfYyQvfGieouVZIf83QCsDMuq5RQK4F8IbNUrfS7Av-pp_09AOACnLhs3nfAEyq2h5zfQnJGT-2EV_pWewMw"
     )
     try {
         initToken.connect()

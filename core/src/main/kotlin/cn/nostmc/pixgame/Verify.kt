@@ -41,7 +41,7 @@ fun updatePlugin() {
         配置教程指引 \!/
         1. 请在技术指导下修改配置文件
         2. 请严格按照按照格式去使用
-        关键词与变量
+        关键词 - - -
         gift:             -  为按照礼物数量整列循环循环在首行填写
         cooldown: 60      -  冷却60秒后向下执行期间不会触发不会执行
         accumulation: 60  -  累计60次向下执行后清空累计重新计算
@@ -61,12 +61,16 @@ fun updatePlugin() {
         freeze: false            -  解冻玩家
         bfunc: 方法,参数,参数...   -  调用内置js方法
         binvoke: 方法(xxxx)      -  以js语句调用方法
+        内置字符变量 - - -
         %user%         -  直播间用户名称
         %streamer%     -  主播名称
         %chat-msg%     -  直播间聊天
         %gift-name%    -  礼物名称/ID
         %gift-num%     -  礼物数量
         %like-num%     -  点赞数量
+        内置PlaceholderAPI- - -
+        %randomnumber_1_5%  -  随机数1-5
+        %bfunc_xxx%         -  调用js方法获取js返回值
         -----------------------------------------------------------
     """.trimIndent())
     cyanPlugin.bindsConfig.save(cyanPlugin.binds)

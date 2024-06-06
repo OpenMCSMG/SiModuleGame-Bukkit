@@ -100,7 +100,7 @@ class GameHandler(private val commandList: MutableList<String>, private val amou
         } else if (cmd.startsWith("cooldown", true)) {
             val time = cmd.split(":")[1].trim().toInt()// 获取冷却时间
             if (coolDown.contains(giftID)) {
-                if (coolDown[giftID]!! >= System.currentTimeMillis()) {
+                if (coolDown[giftID]!! > System.currentTimeMillis()) {
                     coolDown.remove(giftID)
                     // 下个指令
                     if (cyanPlugin.config.getBoolean("debug")) {
@@ -114,9 +114,9 @@ class GameHandler(private val commandList: MutableList<String>, private val amou
                     return
                 }
             } else {
-                coolDown[giftID] = System.currentTimeMillis() + (time * 1000L)
+                coolDown[giftID] = System.currentTimeMillis() + (time * 1000)
                 if (cyanPlugin.config.getBoolean("debug")) {
-                    println("[调试] $giftID 冷却中 添加的时间${coolDown[giftID]!!}")
+                    println("[调试] $giftID 冷却开始 记录${time * 1000} 添加的时间${coolDown[giftID]!!}")
                 }
                 // 下个指令
             }
