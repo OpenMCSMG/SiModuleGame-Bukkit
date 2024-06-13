@@ -3,7 +3,7 @@ import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
 val group = "cn.nostmc.pixgame"
-version = "24.6.9"
+version = "24.6.13"
 
 bukkit {
     name = "SiModuleGame"
@@ -11,8 +11,7 @@ bukkit {
     authors = listOf("NostMC")
     main = "${group}.cyanlib.launcher.CyanPluginLauncher"
     prefix = "§bNostMC§7"
-    depend = listOf("PlaceholderAPI", "ProtocolLib")
-    softDepend = listOf("SIInMineCraft")
+    depend = listOf("PlaceholderAPI", "ProtocolLib", "TAB")
 }
 
 
@@ -44,7 +43,7 @@ dependencies {
 
     compileOnly("commons-io:commons-io:2.13.0")
     compileOnly("org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT")
-    compileOnly("com.comphenix.protocol:ProtocolLib:5.0.0")
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.1.0")
     compileOnly("org.apache.commons:commons-lang3:3.12.0")
     compileOnly("me.clip:placeholderapi:2.11.3") { isTransitive = false }
     compileOnly(fileTree("libs") { include("*.jar") })
@@ -101,7 +100,7 @@ fun uploadTo(shadowJarFile: File) {
     initToken.requestMethod = "GET"
     initToken.setRequestProperty(
         "Authorization",
-        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcxNzgyNzQ4NywiaWF0IjoxNzE3MjIyNjg3fQ.XNHeWsbazjqWNhgGiN5hf6fk5b5adxFTta_C51t_JD8SivRnKZ22X4ASoPPjv4T72UzCh9CsmT4AR01zeGASyKchRhRK5hymzQN3jhKHcPbDOR3Y4abxy8r6uxcctmHXGpdTeQpXI-Cot3hxdLCcJFdHANYC1OMULdx6UZLQjWjNyPYXaA_sldBrPTHVFG99dgjh8hs3X2XsMhVr4AWlGZPtZLZ9R4Clr3Eo72GBLmPrytzZJc0CIjAvMBFqaxYSsrMfYyQvfGieouVZIf83QCsDMuq5RQK4F8IbNUrfS7Av-pp_09AOACnLhs3nfAEyq2h5zfQnJGT-2EV_pWewMw"
+        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcxODU5MDA3MSwiaWF0IjoxNzE3OTg1MjcxfQ.Pvym1RwKQb9lvgJi9fDWyS3UFzXIvsqj_MtfZxGLCtOHxFWomwVaHUBfGKYBOXGNRbHgYZifLukb9XYq0FHRMHYEg4OXsZmqSQ6NltU9fAcDdH2Kh4iIrazwPC4TvoUM77oI35RECdpHGMxjClW2xsVm_2YhpfR_PsE5DVP-Cn4CtkIC5YBxF4zgQRqMnIboBe8ixZtWiMokyVinCUDSsx0eTru3PLTVN2WwbCPy4jMRI0_GzJYzl1VTINyxDEtDFZ5sHPopqabIWpyFOo21uZWfMdVb-UX2MWQZV3WOAWa8RdqaNAq3JyKUxKuOUwE8_FaJ4F70vQ46RqSUyAcrkg"
     )
     try {
         initToken.connect()

@@ -147,7 +147,11 @@ class GameHandler(private val commandList: MutableList<String>, private val amou
                 val p = Bukkit.getOnlinePlayers().first() ?: return
                 accumulation[name] = AccumulationData(
                     amount,
-                    BossBar(p, "§6${name}进度", 1.0f, BossBar.Color.YELLOW, BossBar.Style.NOTCHED_20)
+                    BossBar(p,
+                        "§6${name}进度",
+                        1.0f,
+                        BossBar.Color.YELLOW,
+                        BossBar.Style.NOTCHED_20)
                 )
                 isRunEnd = true// 所有的都跑结束了
                 if (cyanPlugin.config.getBoolean("debug")) {

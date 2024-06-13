@@ -1,0 +1,11 @@
+name: SiModuleGame
+version: 24.6.13
+main: cn.nostmc.pixgame.cyanlib.launcher.CyanPluginLauncher
+description: NostMC
+authors:
+  - NostMC
+depend:
+  - PlaceholderAPI
+  - ProtocolLib
+  - TAB
+prefix: §bNostMC§7
