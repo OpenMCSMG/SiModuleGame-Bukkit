@@ -10,6 +10,7 @@ import cn.nostmc.pixgame.service.GameHandler
 import cn.nostmc.pixgame.service.PlayList
 import com.alibaba.fastjson2.JSONException
 import com.alibaba.fastjson2.JSONObject
+import org.bukkit.Bukkit
 
 
 fun chat(text: String, user: User, man: Streamer) {
@@ -24,7 +25,9 @@ fun chat(text: String, user: User, man: Streamer) {
         }
         PlayList.add(GameHandler(list, 1, text))
     }
-    cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Chat(user, text) , man))
+    Bukkit.getScheduler().runTask(cyanPlugin) {
+        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Chat(user, text), man))
+    }
 }
 
 fun gift(giftID: String, giftName: String, giftNum: Int, giftUrl: String, user: User, man: Streamer) {
@@ -48,7 +51,9 @@ fun gift(giftID: String, giftName: String, giftNum: Int, giftUrl: String, user: 
         }
         PlayList.add(GameHandler(list, giftNum, giftName))
     }
-    cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Gift(giftID.toLong(), giftName,  giftUrl, giftNum.toLong(), user) , man))
+    Bukkit.getScheduler().runTask(cyanPlugin) {
+        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Gift(giftID.toLong(), giftName,  giftUrl, giftNum.toLong(), user) , man))
+    }
 }
 
 fun like(likeNum: Int, user: User, man: Streamer) {
@@ -61,7 +66,9 @@ fun like(likeNum: Int, user: User, man: Streamer) {
         }
         PlayList.add(GameHandler(list, likeNum, "like"))
     }
-    cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Like(user, likeNum.toLong()) , man))
+    Bukkit.getScheduler().runTask(cyanPlugin) {
+        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Like(user, likeNum.toLong()) , man))
+    }
 }
 
 
@@ -74,7 +81,9 @@ fun member(user: User, man: Streamer) {
         }
         PlayList.add(GameHandler(list, 1, "member"))
     }
-    cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Join(user) , man))
+    Bukkit.getScheduler().runTask(cyanPlugin) {
+        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Join(user), man))
+    }
 }
 
 
@@ -131,7 +140,7 @@ class Handle4String(val message: String) {
                 }
                 member(type.user, type.whoStreamer)
             }
-            is SubScribeMessage -> {
+            is FollowMessage -> {
                 if (cyanPlugin.config.getBoolean("debug")) {
                     cyanPlugin.logger.info("收到消息关注: $message")
                 }
@@ -145,6 +154,8 @@ class Handle4String(val message: String) {
                     cyanPlugin.logger.info("未知消息类型或者未解析消息类型看debug")
                 } else if (type.type == HEARTBEAT) {
                     default.send("pong")
+                } else if (type.type == CONNECTED) {
+                    Bukkit.broadcastMessage("§6总站与直播间链接成功")
                 }
             }
 

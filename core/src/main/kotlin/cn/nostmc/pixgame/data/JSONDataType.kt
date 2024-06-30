@@ -27,6 +27,7 @@ open class ServerMessage(
 enum class ServerMessageType {
     PING,
     HEARTBEAT,
+    CONNECTED,
     OTHER
 }
 
@@ -52,7 +53,7 @@ data class JoinMessage(
     override val whoStreamer: Streamer
 ) : DefaultMessage(user, whoStreamer)
 
-data class SubScribeMessage(
+data class FollowMessage(
     override val user: User,
     override val whoStreamer: Streamer
 ) : DefaultMessage(user, whoStreamer)
@@ -99,14 +100,16 @@ fun JSONObject.parseMessage(): DefaultMessage {
             JoinMessage(user, streamer)
         }
 
-        "subscribe" -> {
-            SubScribeMessage(user, streamer)
+        "follow" -> {
+            FollowMessage(user, streamer)
         }
+
 
         "server" -> {
             val type = when (this.getString("data")) {
                 "ping" -> ServerMessageType.PING
                 "heartbeat" -> ServerMessageType.HEARTBEAT
+                "connected" -> ServerMessageType.CONNECTED
                 else -> {
                     if (cyanPlugin.config.getBoolean("debug")) {
                         cyanPlugin.server.consoleSender.sendMessage("§a未知服务器消息类型: ${this.getString("data")}")

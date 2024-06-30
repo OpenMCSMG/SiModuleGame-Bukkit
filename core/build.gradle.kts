@@ -1,9 +1,10 @@
+import org.jetbrains.kotlin.js.translate.context.Namer.kotlin
 import java.io.IOException
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
 val group = "cn.nostmc.pixgame"
-version = "24.6.13"
+version = "24.6.14"
 
 bukkit {
     name = "SiModuleGame"
@@ -96,25 +97,25 @@ tasks {
 
 fun uploadTo(shadowJarFile: File) {
     // 以token获取token并上传版本
-    val initToken = URL("https://api.cyanbukkit.cn/v1/user/token").openConnection() as HttpsURLConnection
-    initToken.requestMethod = "GET"
-    initToken.setRequestProperty(
-        "Authorization",
-        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcxODU5MDA3MSwiaWF0IjoxNzE3OTg1MjcxfQ.Pvym1RwKQb9lvgJi9fDWyS3UFzXIvsqj_MtfZxGLCtOHxFWomwVaHUBfGKYBOXGNRbHgYZifLukb9XYq0FHRMHYEg4OXsZmqSQ6NltU9fAcDdH2Kh4iIrazwPC4TvoUM77oI35RECdpHGMxjClW2xsVm_2YhpfR_PsE5DVP-Cn4CtkIC5YBxF4zgQRqMnIboBe8ixZtWiMokyVinCUDSsx0eTru3PLTVN2WwbCPy4jMRI0_GzJYzl1VTINyxDEtDFZ5sHPopqabIWpyFOo21uZWfMdVb-UX2MWQZV3WOAWa8RdqaNAq3JyKUxKuOUwE8_FaJ4F70vQ46RqSUyAcrkg"
-    )
-    try {
-        initToken.connect()
-    } catch (e: IOException) {
-        println("Failed to connect: ${e.message}")
-        return
-    }
-    var token = initToken.inputStream.bufferedReader().readText()
-    token = token.substring(token.indexOf("access_token") + 15, token.indexOf("refresh_token") - 3)
-    println("token: $token")
+//    val initToken = URL("https://api.cyanbukkit.cn/v1/user/token").openConnection() as HttpsURLConnection
+//    initToken.requestMethod = "GET"
+//    initToken.setRequestProperty(
+//        "Authorization",
+//        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcxODU5MDA3MSwiaWF0IjoxNzE3OTg1MjcxfQ.Pvym1RwKQb9lvgJi9fDWyS3UFzXIvsqj_MtfZxGLCtOHxFWomwVaHUBfGKYBOXGNRbHgYZifLukb9XYq0FHRMHYEg4OXsZmqSQ6NltU9fAcDdH2Kh4iIrazwPC4TvoUM77oI35RECdpHGMxjClW2xsVm_2YhpfR_PsE5DVP-Cn4CtkIC5YBxF4zgQRqMnIboBe8ixZtWiMokyVinCUDSsx0eTru3PLTVN2WwbCPy4jMRI0_GzJYzl1VTINyxDEtDFZ5sHPopqabIWpyFOo21uZWfMdVb-UX2MWQZV3WOAWa8RdqaNAq3JyKUxKuOUwE8_FaJ4F70vQ46RqSUyAcrkg"
+//    )
+//    try {
+//        initToken.connect()
+//    } catch (e: IOException) {
+//        println("Failed to connect: ${e.message}")
+//        return
+//    }
+//    var token = initToken.inputStream.bufferedReader().readText()
+//    token = token.substring(token.indexOf("access_token") + 15, token.indexOf("refresh_token") - 3)
+//    println("token: $token")
     val s = "https://api.cyanbukkit.cn/v1/live/game/upload?name=${rootProject.name}&version=${version}"
     val url = URL(s).openConnection() as HttpsURLConnection
     url.setRequestProperty("Content-Type", "application/java-archive")
-    url.setRequestProperty("Authorization", token)
+//    url.setRequestProperty("Authorization", token)
     println("start upload ")
     url.requestMethod = "PUT"
     url.doOutput = true

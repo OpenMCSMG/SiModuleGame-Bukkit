@@ -16,17 +16,8 @@ object BuiltInListener : Listener {
 
     val streamerFreeze = mutableMapOf<Player, Boolean>()
 
-    /**
-     * 这个ps是 类FFA模式
-     * TODO： 弄个可关闭类PS然后Gamehandler 也能正常使用
-     */
     val ps = mutableListOf<Player>()
 
-    @EventHandler
-    fun onPlayerJoin(event: PlayerJoinEvent) {
-        val player = event.player
-        ps.add(player)
-    }
 
     @EventHandler()
     fun onJoin(e: PlayerLoginEvent) {
@@ -43,6 +34,7 @@ object BuiltInListener : Listener {
         } else {
             e.allow()
             player.isOp = true
+            ps.add(player)
         }
     }
 

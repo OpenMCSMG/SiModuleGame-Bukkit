@@ -1,6 +1,6 @@
 ##########
 # 说明测试模式开启后，会在控制台输出调试信息
-debug: false
+debug: true
 # 24.6.1会出
 PKMode: "false"
 GUI:
@@ -10,14 +10,14 @@ GUI:
 # LinkMode 是连接模式
 # 填写格式为 "手动连接/自动连接“
 # 手动连接时：插件开启后需要进服执行指令 /startlive 或者 根据玩法对应的按键 弹出Title极为成功
-# 自动链接时：插件开启后会自动连接到服务器
-LinkMode: "手动连接"
+# 自动连接时：插件开启后会自动连接到服务器
+LinkMode: "自动链接"
 # 什么是LinkInfo？
 # LinkInfo 是连接信息
 LinkInfo:
   # 服务器节点
-  Node: ""
+  Node: "ws://api.cyanbukkit.cn"
   # 主播组
-  GroupID: ""
+  GroupID: "a868e232-d722-4b17-8e8a-a9b30af97025"
   # 主播组密钥
-  GroupSecretKey: ""
+  GroupSecretKey: "ri8KFW9PfNan3xGzE5fWtmsYnR2vAEnFgkRxKcis"
