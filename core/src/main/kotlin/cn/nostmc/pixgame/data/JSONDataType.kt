@@ -28,6 +28,7 @@ enum class ServerMessageType {
     PING,
     HEARTBEAT,
     CONNECTED,
+    CLOSE,
     OTHER
 }
 
@@ -110,6 +111,7 @@ fun JSONObject.parseMessage(): DefaultMessage {
                 "ping" -> ServerMessageType.PING
                 "heartbeat" -> ServerMessageType.HEARTBEAT
                 "connected" -> ServerMessageType.CONNECTED
+                "closed" -> ServerMessageType.CLOSE
                 else -> {
                     if (cyanPlugin.config.getBoolean("debug")) {
                         cyanPlugin.server.consoleSender.sendMessage("§a未知服务器消息类型: ${this.getString("data")}")

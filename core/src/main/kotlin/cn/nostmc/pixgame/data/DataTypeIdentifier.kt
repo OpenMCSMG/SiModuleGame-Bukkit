@@ -147,15 +147,24 @@ class Handle4String(val message: String) {
                 social(type.user, type.whoStreamer)
             }
             is ServerMessage -> {
-                if (type.type == OTHER) {
-                    if (cyanPlugin.config.getBoolean("debug")) {
-                        cyanPlugin.logger.info("收到消息Debug: $message")
+                when (type.type) {
+                    OTHER -> {
+                        if (cyanPlugin.config.getBoolean("debug")) {
+                            cyanPlugin.logger.info("收到消息Debug: $message")
+                        }
+                        cyanPlugin.logger.info("未知消息类型或者未解析消息类型看debug")
                     }
-                    cyanPlugin.logger.info("未知消息类型或者未解析消息类型看debug")
-                } else if (type.type == HEARTBEAT) {
-                    default.send("pong")
-                } else if (type.type == CONNECTED) {
-                    Bukkit.broadcastMessage("§6总站与直播间链接成功")
+                    HEARTBEAT -> {
+                        default.send("pong")
+                    }
+                    CONNECTED -> {
+                        Bukkit.broadcastMessage("§6总站与直播间链接成功")
+                    }
+                    CLOSE -> {
+                        Bukkit.broadcastMessage("直播间关闭了")
+                    }
+
+                    PING -> {}
                 }
             }
 
