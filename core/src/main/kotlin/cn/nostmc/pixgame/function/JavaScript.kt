@@ -64,6 +64,7 @@ fun reloadJS(isExecute: Boolean = false) {
         是js的语句问题可能存在方法调用错误不对 请查看§fhttps://live.cyanbukkit.cn/docs
        §c <JS>问题 ${e.localizedMessage}""".trimIndent()
             )
+            Bukkit.getConsoleSender().sendMessage("§c加载 ${it.name} 出现错误")
         }
         Thread.sleep(1000)
     }

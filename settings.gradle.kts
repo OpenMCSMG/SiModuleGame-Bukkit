@@ -8,4 +8,4 @@ pluginManagement {
 }
 rootProject.name = "SiModuleGame-Bukkit"
 include("core")
-//include("jdk17")
+include("wikibot")

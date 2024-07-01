@@ -7,6 +7,7 @@ import cn.nostmc.pixgame.commands.fixed.DamageCommand;
 import cn.nostmc.pixgame.commands.fixed.DoubleCommand;
 import cn.nostmc.pixgame.commands.fixed.KnockBackCommand;
 import cn.nostmc.pixgame.commands.fixed.LotteryCommand;
+import cn.nostmc.pixgame.connect.FunctionUpdate;
 import cn.nostmc.pixgame.cyanlib.loader.KotlinBootstrap;
 import com.oracle.truffle.js.scriptengine.GraalJSEngineFactory;
 import com.oracle.truffle.js.scriptengine.GraalJSScriptEngine;
@@ -96,6 +97,7 @@ public class CyanPluginLauncher extends JavaPlugin {
                 }
             }
         }
+        FunctionUpdate.INSTANCE.find();
     }
 
 

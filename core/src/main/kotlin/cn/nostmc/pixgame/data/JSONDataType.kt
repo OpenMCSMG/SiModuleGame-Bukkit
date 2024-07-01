@@ -4,7 +4,7 @@ import cn.nostmc.pixgame.api.data.Streamer
 import cn.nostmc.pixgame.api.data.User
 import cn.nostmc.pixgame.cyanlib.launcher.CyanPluginLauncher.cyanPlugin
 import com.alibaba.fastjson2.JSONObject
-
+import org.bukkit.Bukkit
 
 
 open class DefaultMessage(
@@ -111,7 +111,10 @@ fun JSONObject.parseMessage(): DefaultMessage {
                 "ping" -> ServerMessageType.PING
                 "heartbeat" -> ServerMessageType.HEARTBEAT
                 "connected" -> ServerMessageType.CONNECTED
-                "closed" -> ServerMessageType.CLOSE
+                "closed" -> {
+                    Bukkit.broadcastMessage("${streamer.anchorName} - ${streamer.roomNumber}的直播间关闭了")
+                    ServerMessageType.CLOSE
+                }
                 else -> {
                     if (cyanPlugin.config.getBoolean("debug")) {
                         cyanPlugin.server.consoleSender.sendMessage("§a未知服务器消息类型: ${this.getString("data")}")

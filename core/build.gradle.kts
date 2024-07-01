@@ -4,7 +4,7 @@ import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
 val group = "cn.nostmc.pixgame"
-version = "24.6.14"
+version = "24.7.1"
 
 bukkit {
     name = "SiModuleGame"
@@ -96,26 +96,10 @@ tasks {
 
 
 fun uploadTo(shadowJarFile: File) {
-    // 以token获取token并上传版本
-//    val initToken = URL("https://api.cyanbukkit.cn/v1/user/token").openConnection() as HttpsURLConnection
-//    initToken.requestMethod = "GET"
-//    initToken.setRequestProperty(
-//        "Authorization",
-//        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcxODU5MDA3MSwiaWF0IjoxNzE3OTg1MjcxfQ.Pvym1RwKQb9lvgJi9fDWyS3UFzXIvsqj_MtfZxGLCtOHxFWomwVaHUBfGKYBOXGNRbHgYZifLukb9XYq0FHRMHYEg4OXsZmqSQ6NltU9fAcDdH2Kh4iIrazwPC4TvoUM77oI35RECdpHGMxjClW2xsVm_2YhpfR_PsE5DVP-Cn4CtkIC5YBxF4zgQRqMnIboBe8ixZtWiMokyVinCUDSsx0eTru3PLTVN2WwbCPy4jMRI0_GzJYzl1VTINyxDEtDFZ5sHPopqabIWpyFOo21uZWfMdVb-UX2MWQZV3WOAWa8RdqaNAq3JyKUxKuOUwE8_FaJ4F70vQ46RqSUyAcrkg"
-//    )
-//    try {
-//        initToken.connect()
-//    } catch (e: IOException) {
-//        println("Failed to connect: ${e.message}")
-//        return
-//    }
-//    var token = initToken.inputStream.bufferedReader().readText()
-//    token = token.substring(token.indexOf("access_token") + 15, token.indexOf("refresh_token") - 3)
-//    println("token: $token")
     val s = "https://api.cyanbukkit.cn/v1/live/game/upload?name=${rootProject.name}&version=${version}"
     val url = URL(s).openConnection() as HttpsURLConnection
     url.setRequestProperty("Content-Type", "application/java-archive")
-//    url.setRequestProperty("Authorization", token)
+    url.setRequestProperty("x-token", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcyMDMzMzE2NywiaWF0IjoxNzE5NzI4MzY3LCJ1c2VybmFtZSI6InNtYWxseHkiLCJnZW5kZXIiOjIsInBob25lIjoiIiwiZW1haWwiOiIifQ.gzL_bQxfzy2ZOi9N2EdDi9DzxYeFYAuC1URxSlRr_pyoOrUT3vXliMq58uguDeAYsNVVRk3ASvuImBpzYt4JrR4e4kU5-x0mxxTipUji3ZwICDeZ_mpiVa5cDILriRHE4K_5DsqrZfMRjtSGyDrxA0lMBaDH1J5xMyCCVgne_wt02X-EkcyJ0Ei9sVOKgt43YDHQ1cFfFRDev-MCuXVBLRG8tTdC9Pu7VJ_NlAIq2-k8jhqnjT3o7v0ol1FCVM8whGpY5BVc3GevcFAQBnnhyLqO1rs3NZMDPu-lckwv1UBYXc0zaK5nI4dCJ7QFZyNabyc3WEuQR_85gxyBfFB62A")
     println("start upload ")
     url.requestMethod = "PUT"
     url.doOutput = true
@@ -130,16 +114,8 @@ fun uploadTo(shadowJarFile: File) {
     }
     println("uploading")
     if (url.responseCode != 200) {
-        println("Failed to upload: ${url.responseCode}")
-        throw IOException("""
-            This version number of the jar has been uploaded
-            please modify the version number
-            Note that if the plugin has already modified its content,
-            please change the version
-             The version format is "year.month.issue number"
-              where the issue number is the number of compilations for new additions or bug fixes plus one
-               If the previous version was .1 and you have made changes it should be .2,
-                following the coding work order for fixes and additions.
-        """.trimIndent())
+        throw IOException(url.content.toString())
+    } else {
+        println("upload success")
     }
 }

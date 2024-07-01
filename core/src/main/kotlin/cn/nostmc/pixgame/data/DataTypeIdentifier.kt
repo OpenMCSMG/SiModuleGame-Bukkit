@@ -96,7 +96,9 @@ fun social(user: User, man: Streamer) {
         }
         PlayList.add(GameHandler(list, 1, "social"))
     }
-    cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Join(user) , man))
+    Bukkit.getScheduler().runTask(cyanPlugin) {
+        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Join(user) , man))
+    }
 }
 
 
@@ -159,9 +161,11 @@ class Handle4String(val message: String) {
                     }
                     CONNECTED -> {
                         Bukkit.broadcastMessage("§6总站与直播间链接成功")
+                        Bukkit.getConsoleSender().sendMessage("§6总站与直播间链接成功")
                     }
                     CLOSE -> {
                         Bukkit.broadcastMessage("直播间关闭了")
+                        Bukkit.getConsoleSender().sendMessage("直播间关闭了")
                     }
 
                     PING -> {}
