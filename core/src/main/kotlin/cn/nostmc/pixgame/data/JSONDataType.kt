@@ -3,6 +3,7 @@ package cn.nostmc.pixgame.data
 import cn.nostmc.pixgame.api.data.Streamer
 import cn.nostmc.pixgame.api.data.User
 import cn.nostmc.pixgame.cyanlib.launcher.CyanPluginLauncher.cyanPlugin
+import cn.nostmc.pixgame.sendDebugMessage
 import com.alibaba.fastjson2.JSONObject
 import org.bukkit.Bukkit
 
@@ -28,6 +29,7 @@ enum class ServerMessageType {
     PING,
     HEARTBEAT,
     CONNECTED,
+    AUTH_SUCCESS,
     CLOSE,
     OTHER
 }
@@ -111,24 +113,15 @@ fun JSONObject.parseMessage(): DefaultMessage {
                 "ping" -> ServerMessageType.PING
                 "heartbeat" -> ServerMessageType.HEARTBEAT
                 "connected" -> ServerMessageType.CONNECTED
-                "closed" -> {
-                    Bukkit.broadcastMessage("${streamer.anchorName} - ${streamer.roomNumber}的直播间关闭了")
-                    ServerMessageType.CLOSE
-                }
-                else -> {
-                    if (cyanPlugin.config.getBoolean("debug")) {
-                        cyanPlugin.server.consoleSender.sendMessage("§a未知服务器消息类型: ${this.getString("data")}")
-                    }
-                    ServerMessageType.OTHER
-                }
+                "auth success" -> ServerMessageType.AUTH_SUCCESS
+                "closed" -> ServerMessageType.CLOSE
+                else -> ServerMessageType.OTHER
             }
             ServerMessage(type,  this.getLongValue("timestamp"), streamer)
         }
 
         else -> {
-            if (cyanPlugin.config.getBoolean("debug")) {
-                cyanPlugin.server.consoleSender.sendMessage("§a未知的消息类型: ${this.getString("type")}")
-            }
+            sendDebugMessage("§a处理类型消息时收到未知的类型“${this.getString("type")}”")
             DefaultMessage(user, streamer)
         }
     }

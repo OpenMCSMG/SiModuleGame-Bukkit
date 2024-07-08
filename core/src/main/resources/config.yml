@@ -1,17 +1,16 @@
 ##########
 # 说明测试模式开启后，会在控制台输出调试信息
 debug: true
-# 24.6.1会出
 PKMode: "false"
 GUI:
   Platform: "douyin"
-  快速执行: ":offset_0::binds_class:"
+  Title: ":offset_0::binds_class:"
 # 什么是LinkMode？
 # LinkMode 是连接模式
 # 填写格式为 "手动连接/自动连接“
 # 手动连接时：插件开启后需要进服执行指令 /startlive 或者 根据玩法对应的按键 弹出Title极为成功
 # 自动连接时：插件开启后会自动连接到服务器
-LinkMode: "自动链接"
+LinkMode: "手动连接"
 # 什么是LinkInfo？
 # LinkInfo 是连接信息
 LinkInfo:

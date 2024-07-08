@@ -1,5 +1,5 @@
 name: SiModuleGame
-version: 24.7.1
+version: 24.7.3
 main: cn.nostmc.pixgame.cyanlib.launcher.CyanPluginLauncher
 description: NostMC
 authors:

@@ -6,6 +6,7 @@ import cn.nostmc.pixgame.cyanlib.launcher.CyanPluginLauncher.cyanPlugin
 import cn.nostmc.pixgame.data.ServerMessageType.*
 import cn.nostmc.pixgame.default
 import cn.nostmc.pixgame.function.FriendException
+import cn.nostmc.pixgame.sendDebugMessage
 import cn.nostmc.pixgame.service.GameHandler
 import cn.nostmc.pixgame.service.PlayList
 import com.alibaba.fastjson2.JSONException
@@ -154,18 +155,20 @@ class Handle4String(val message: String) {
                         if (cyanPlugin.config.getBoolean("debug")) {
                             cyanPlugin.logger.info("收到消息Debug: $message")
                         }
-                        cyanPlugin.logger.info("未知消息类型或者未解析消息类型看debug")
+                        sendDebugMessage("§c未知消息类型或者未解析消息类型看debug")
                     }
                     HEARTBEAT -> {
                         default.send("pong")
                     }
+                    AUTH_SUCCESS -> {
+                        Bukkit.getConsoleSender().sendMessage("§6主播${type.whoStreamer.anchorName}成功开放平台与直播平台握手")
+                    }
                     CONNECTED -> {
-                        Bukkit.broadcastMessage("§6总站与直播间链接成功")
-                        Bukkit.getConsoleSender().sendMessage("§6总站与直播间链接成功")
+                        Bukkit.broadcastMessage("§6主播${type.whoStreamer}成功与直播间链接")
+                        Bukkit.getConsoleSender().sendMessage("§6主播${type.whoStreamer.anchorName}成功与直播间链接成功")
                     }
                     CLOSE -> {
-                        Bukkit.broadcastMessage("直播间关闭了")
-                        Bukkit.getConsoleSender().sendMessage("直播间关闭了")
+                        Bukkit.broadcastMessage("§c主播${type.whoStreamer.anchorName}没有开直播")
                     }
 
                     PING -> {}
@@ -173,10 +176,7 @@ class Handle4String(val message: String) {
             }
 
             else -> {
-                if (cyanPlugin.config.getBoolean("debug")) {
-                    cyanPlugin.logger.info("收到消息Debug: $message")
-                }
-                throw FriendException("未知消息类型")
+                throw FriendException("处理消息识别时发现未知消息类型 $message")
             }
         }
     }

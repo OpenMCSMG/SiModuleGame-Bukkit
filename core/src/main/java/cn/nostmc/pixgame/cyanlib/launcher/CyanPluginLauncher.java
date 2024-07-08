@@ -120,7 +120,6 @@ public class CyanPluginLauncher extends JavaPlugin {
         bindsConfig = YamlConfiguration.loadConfiguration(binds);
         lotteryConfig = YamlConfiguration.loadConfiguration(lottery);
         whitelistConfig = YamlConfiguration.loadConfiguration(whitelist);
-
     }
 
     public void registerCommand(Command cmd) {

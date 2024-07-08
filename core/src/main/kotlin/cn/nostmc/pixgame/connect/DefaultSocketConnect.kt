@@ -2,6 +2,7 @@ package cn.nostmc.pixgame.connect
 
 import cn.nostmc.pixgame.cyanlib.launcher.CyanPluginLauncher.cyanPlugin
 import cn.nostmc.pixgame.data.Handle4String
+import cn.nostmc.pixgame.sendDebugMessage
 import cn.nostmc.pixgame.stopAnimation
 import org.bukkit.Bukkit
 import org.java_websocket.client.WebSocketClient
@@ -26,8 +27,8 @@ class DefaultSocketConnect(
 
     init {
         Timer().schedule(0, 3000) {
-            if (cyanPlugin.config.getBoolean("debug")) {
-                cyanPlugin.server.consoleSender.sendMessage(readyState.name)
+            if (readyState != ReadyState.OPEN) {
+                sendDebugMessage("链接状态处于$readyState")
             }
             if (!isLink) {
                 return@schedule

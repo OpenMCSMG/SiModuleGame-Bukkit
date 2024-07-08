@@ -4,7 +4,7 @@ import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
 val group = "cn.nostmc.pixgame"
-version = "24.7.1"
+version = "24.7.3"
 
 bukkit {
     name = "SiModuleGame"
@@ -99,7 +99,7 @@ fun uploadTo(shadowJarFile: File) {
     val s = "https://api.cyanbukkit.cn/v1/live/game/upload?name=${rootProject.name}&version=${version}"
     val url = URL(s).openConnection() as HttpsURLConnection
     url.setRequestProperty("Content-Type", "application/java-archive")
-    url.setRequestProperty("x-token", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcyMDMzMzE2NywiaWF0IjoxNzE5NzI4MzY3LCJ1c2VybmFtZSI6InNtYWxseHkiLCJnZW5kZXIiOjIsInBob25lIjoiIiwiZW1haWwiOiIifQ.gzL_bQxfzy2ZOi9N2EdDi9DzxYeFYAuC1URxSlRr_pyoOrUT3vXliMq58uguDeAYsNVVRk3ASvuImBpzYt4JrR4e4kU5-x0mxxTipUji3ZwICDeZ_mpiVa5cDILriRHE4K_5DsqrZfMRjtSGyDrxA0lMBaDH1J5xMyCCVgne_wt02X-EkcyJ0Ei9sVOKgt43YDHQ1cFfFRDev-MCuXVBLRG8tTdC9Pu7VJ_NlAIq2-k8jhqnjT3o7v0ol1FCVM8whGpY5BVc3GevcFAQBnnhyLqO1rs3NZMDPu-lckwv1UBYXc0zaK5nI4dCJ7QFZyNabyc3WEuQR_85gxyBfFB62A")
+    url.setRequestProperty("x-token", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcyMTA2MDE0NCwiaWF0IjoxNzIwNDU1MzQ0LCJ1c2VybmFtZSI6InNtYWxseHkiLCJnZW5kZXIiOjIsInBob25lIjoiIiwiZW1haWwiOiIifQ.aUh70VW4TcgwhhFCZ8jJVRMXFGNO6afAUp2ZNXxSmNXhKhhaU1e3gXi_c04mpWOFUytulETgatD6UotmI3r1CSgqA640JCUQl1okYMqxUefdelJtlvusJESAl9gtHXwMMCLIpSzw-6Xdv7lG2PDfG1IoceIttmsKiAFusc1P-r7Du6yVAKVrqZK9L1Jr6WWxPykYCnSznGitOmiEMXtcm2LbJ627AemTBEFvIT9aHoAdTsMV_ZrOaVpAHcEGjMvzAts4lT9akK1W_2uiJBNPeJ0mCwheSjUQCUHVHPAEO2UR3IAKaTefBJMdAmNEzgPwlmb30OSbo7hir4Q_oLFhBw")
     println("start upload ")
     url.requestMethod = "PUT"
     url.doOutput = true

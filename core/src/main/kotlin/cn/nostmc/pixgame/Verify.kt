@@ -35,8 +35,38 @@ fun realEnable() {
 }
 
 fun updatePlugin() {
+    cyanPlugin.config.options().copyDefaults(true)
+    cyanPlugin.config.options().header(
+        """
+        -----------------------------------------------------------
+        debug: 的关键词是说明测试模式开启后，会在控制台输出调试信息
+        GUI: GUi的设置
+            Platform: 平台显示对应的礼物贴图使用材质包下可见
+            Title: GUI的标题
+        LinkMode: 是连接模式
+        填写格式为 "手动连接/自动连接“  注意 连接 的文字
+        手动连接时：插件开启后需要进服执行指令 /startlive 或者 按这SHIFT 头朝上 左键点击
+        自动连接时：插件开启后会自动连接到服务器
+        什么是LinkInfo？
+        LinkInfo 是连接信息
+            Node:服务器节点
+            GroupID: 主播组ID
+            GroupSecretKey: 主播组密钥
+        -----------------------------------------------------------
+    """.trimIndent()
+    )
+    if (cyanPlugin.config.get("PKMode") != null) cyanPlugin.config.set("PKMode", null)
+    if (cyanPlugin.config.getString("GUI.快速执行") != null) {
+        val origin = cyanPlugin.config.getString("GUI.快速执行")!!
+        cyanPlugin.config.set("GUI.快速执行", null)
+        cyanPlugin.config.set("GUI.Title", origin)
+    }
+    cyanPlugin.saveConfig()
+
+
     cyanPlugin.bindsConfig.options().copyDefaults(true)
-    cyanPlugin.bindsConfig.options().header("""
+    cyanPlugin.bindsConfig.options().header(
+        """
         -----------------------------------------------------------
         配置教程指引 \!/
         1. 请在技术指导下修改配置文件
@@ -72,12 +102,12 @@ fun updatePlugin() {
         %randomnumber_1_5%  -  随机数1-5
         %bfunc_xxx%         -  调用js方法获取js返回值
         -----------------------------------------------------------
-    """.trimIndent())
+    """.trimIndent()
+    )
     cyanPlugin.bindsConfig.save(cyanPlugin.binds)
     // 验证加检查更新
     matchStartMode()
 }
-
 
 
 fun matchStartMode() {
@@ -91,7 +121,7 @@ fun matchStartMode() {
     realEnable()
 }
 
-lateinit var linkAnimation : BukkitRunnable
+lateinit var linkAnimation: BukkitRunnable
 
 /**
  * 链接的时候必须走着一条路
@@ -106,11 +136,13 @@ fun linkTextAnimation() {
                         Title.title(it, "§6§l开始直播", "§7§lLinking.", 0, 20, 0)
                     }
                 }
+
                 2 -> {
                     cyanPlugin.server.onlinePlayers.forEach {
                         Title.title(it, "§6§l开始直播", "§7§lLinking..", 0, 20, 0)
                     }
                 }
+
                 3 -> {
                     cyanPlugin.server.onlinePlayers.forEach {
                         Title.title(it, "§6§l开始直播", "§7§lLinking...", 0, 20, 0)
@@ -161,6 +193,11 @@ fun link() {
     default = DefaultSocketConnect(uri, headers)
     default.connect()
     isLink = true
+}
+
+
+fun sendDebugMessage(message: String) {
+    cyanPlugin.server.consoleSender.sendMessage("§a核心:§7$message")
 }
 
 lateinit var default: DefaultSocketConnect
