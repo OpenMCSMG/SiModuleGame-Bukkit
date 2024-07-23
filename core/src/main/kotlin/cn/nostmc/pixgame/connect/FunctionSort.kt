@@ -12,6 +12,10 @@ enum class FunctionSort(val display: String) {
     ALLMUSICADDON("AllMusicAddon"),
     MORPH("Morph"),
     NEWSPAWNENTITY("NewBieSpawnEntity"),
+    SOUNDPACK("SoundPack"),
+    FINDDIFFERENT("FindDifferent"),
+    GROWWHEAT("GrowWheat"),
+
 
     ERROR("Error"),
     ;

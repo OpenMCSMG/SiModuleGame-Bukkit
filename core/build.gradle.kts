@@ -4,7 +4,7 @@ import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
 val group = "cn.nostmc.pixgame"
-version = "24.7.3"
+version = "24.7.4"
 
 bukkit {
     name = "SiModuleGame"
@@ -37,7 +37,7 @@ dependencies {
     compileOnly(kotlin("stdlib"))
     compileOnly("org.java-websocket:Java-WebSocket:1.5.3")
     compileOnly("com.alibaba.fastjson2:fastjson2-kotlin:2.0.26")
-
+    implementation(project(":api"))
     implementation("org.graalvm.sdk:graal-sdk:$GRAAL_VERSION")
     implementation("org.graalvm.js:js:$GRAAL_VERSION")
     implementation("org.graalvm.js:js-scriptengine:$GRAAL_VERSION")
@@ -99,7 +99,7 @@ fun uploadTo(shadowJarFile: File) {
     val s = "https://api.cyanbukkit.cn/v1/live/game/upload?name=${rootProject.name}&version=${version}"
     val url = URL(s).openConnection() as HttpsURLConnection
     url.setRequestProperty("Content-Type", "application/java-archive")
-    url.setRequestProperty("x-token", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcyMTA2MDE0NCwiaWF0IjoxNzIwNDU1MzQ0LCJ1c2VybmFtZSI6InNtYWxseHkiLCJnZW5kZXIiOjIsInBob25lIjoiIiwiZW1haWwiOiIifQ.aUh70VW4TcgwhhFCZ8jJVRMXFGNO6afAUp2ZNXxSmNXhKhhaU1e3gXi_c04mpWOFUytulETgatD6UotmI3r1CSgqA640JCUQl1okYMqxUefdelJtlvusJESAl9gtHXwMMCLIpSzw-6Xdv7lG2PDfG1IoceIttmsKiAFusc1P-r7Du6yVAKVrqZK9L1Jr6WWxPykYCnSznGitOmiEMXtcm2LbJ627AemTBEFvIT9aHoAdTsMV_ZrOaVpAHcEGjMvzAts4lT9akK1W_2uiJBNPeJ0mCwheSjUQCUHVHPAEO2UR3IAKaTefBJMdAmNEzgPwlmb30OSbo7hir4Q_oLFhBw")
+    url.setRequestProperty("x-token", "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjZW50cmFsIiwic3ViIjoiMiIsImV4cCI6MTcyMTg0NDc2NCwiaWF0IjoxNzIxMjM5OTY0LCJ1c2VybmFtZSI6InNtYWxseHkiLCJnZW5kZXIiOjIsInBob25lIjoiIiwiZW1haWwiOiIifQ.mG0aVRTmZYDgujGfxWv6UEfLj8lxkZeXcuLZP0RE0Rt1wo7w5XN48EYs8P7aPDd1mSUc6pOlEMyg2bQmA0KqdL8Ezb28vEsf3SBv7g3ldQmormr0RQzQhu4IeYBnspigSjmMTL0VjKpUOTTOdbrSdWeCWI0DJ8WbMj0qbKu6b5trKbViFs5Jfmfh-5Sgpwd_WDgYckVpWu8gHjPSIimoeN2EhezjideGXoXL5blYFll4naY8EYzyMuPTap6TSANj9DZOS-2r7z8gy0BE_MIwUzZzKOKep3ETqBj9qJRTaIx4yTzJz8ZcCnhCd7DEgeDhuNvUmhN3gTh8gjY1Hr3XDA")
     println("start upload ")
     url.requestMethod = "PUT"
     url.doOutput = true

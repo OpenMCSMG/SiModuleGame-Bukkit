@@ -55,8 +55,10 @@ fun updatePlugin() {
         -----------------------------------------------------------
     """.trimIndent()
     )
-    if (cyanPlugin.config.get("PKMode") != null) cyanPlugin.config.set("PKMode", null)
-    if (cyanPlugin.config.getString("GUI.快速执行") != null) {
+    if (cyanPlugin.config.contains("PKMode")) {
+        cyanPlugin.config.set("PKMode", null)
+    }
+    if (cyanPlugin.config.contains("GUI.快速执行")) {
         val origin = cyanPlugin.config.getString("GUI.快速执行")!!
         cyanPlugin.config.set("GUI.快速执行", null)
         cyanPlugin.config.set("GUI.Title", origin)

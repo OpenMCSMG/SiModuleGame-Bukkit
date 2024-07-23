@@ -14,7 +14,7 @@ import com.alibaba.fastjson2.JSONObject
 import org.bukkit.Bukkit
 
 
-fun chat(text: String, user: User, man: Streamer) {
+fun chat(text: String, user: cn.nostmc.pixgame.api.data.User, man: cn.nostmc.pixgame.api.data.Streamer) {
     val chat = cyanPlugin.bindsConfig.getConfigurationSection("chat") ?: return
     if (chat.contains(text)) {
         val list = chat.getStringList(text).toMutableList()
@@ -27,11 +27,16 @@ fun chat(text: String, user: User, man: Streamer) {
         PlayList.add(GameHandler(list, 1, text))
     }
     Bukkit.getScheduler().runTask(cyanPlugin) {
-        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Chat(user, text), man))
+        cyanPlugin.server.pluginManager.callEvent(
+            cn.nostmc.pixgame.api.LiveMessageEvent(
+                cn.nostmc.pixgame.api.data.Chat(user, text),
+                man
+            )
+        )
     }
 }
 
-fun gift(giftID: String, giftName: String, giftNum: Int, giftUrl: String, user: User, man: Streamer) {
+fun gift(giftID: String, giftName: String, giftNum: Int, giftUrl: String, user: cn.nostmc.pixgame.api.data.User, man: cn.nostmc.pixgame.api.data.Streamer) {
     val gift = cyanPlugin.bindsConfig.getConfigurationSection("gift") ?: return
     if (gift.contains(giftID)) {
         val list = gift.getStringList(giftID).toMutableList()
@@ -53,11 +58,22 @@ fun gift(giftID: String, giftName: String, giftNum: Int, giftUrl: String, user: 
         PlayList.add(GameHandler(list, giftNum, giftName))
     }
     Bukkit.getScheduler().runTask(cyanPlugin) {
-        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Gift(giftID.toLong(), giftName,  giftUrl, giftNum.toLong(), user) , man))
+        cyanPlugin.server.pluginManager.callEvent(
+            cn.nostmc.pixgame.api.LiveMessageEvent(
+                cn.nostmc.pixgame.api.data.Gift(
+                    giftID.toLong(),
+                    giftName,
+                    giftUrl,
+                    giftNum.toLong(),
+                    user
+                ),
+                man
+            )
+        )
     }
 }
 
-fun like(likeNum: Int, user: User, man: Streamer) {
+fun like(likeNum: Int, user: cn.nostmc.pixgame.api.data.User, man: cn.nostmc.pixgame.api.data.Streamer) {
     if (cyanPlugin.bindsConfig.contains("like")) {
         val list = cyanPlugin.bindsConfig.getStringList("like").toMutableList()
         for ((index, s) in list.withIndex()) {
@@ -68,12 +84,17 @@ fun like(likeNum: Int, user: User, man: Streamer) {
         PlayList.add(GameHandler(list, likeNum, "like"))
     }
     Bukkit.getScheduler().runTask(cyanPlugin) {
-        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Like(user, likeNum.toLong()) , man))
+        cyanPlugin.server.pluginManager.callEvent(
+            cn.nostmc.pixgame.api.LiveMessageEvent(
+                cn.nostmc.pixgame.api.data.Like(user, likeNum.toLong()),
+                man
+            )
+        )
     }
 }
 
 
-fun member(user: User, man: Streamer) {
+fun member(user: cn.nostmc.pixgame.api.data.User, man: cn.nostmc.pixgame.api.data.Streamer) {
     if (cyanPlugin.bindsConfig.contains("member")) {
         val list = cyanPlugin.bindsConfig.getStringList("member").toMutableList()
         for ((index, s) in list.withIndex()) {
@@ -83,12 +104,17 @@ fun member(user: User, man: Streamer) {
         PlayList.add(GameHandler(list, 1, "member"))
     }
     Bukkit.getScheduler().runTask(cyanPlugin) {
-        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Join(user), man))
+        cyanPlugin.server.pluginManager.callEvent(
+            cn.nostmc.pixgame.api.LiveMessageEvent(
+                cn.nostmc.pixgame.api.data.Join(user),
+                man
+            )
+        )
     }
 }
 
 
-fun social(user: User, man: Streamer) {
+fun social(user: cn.nostmc.pixgame.api.data.User, man: cn.nostmc.pixgame.api.data.Streamer) {
     if (cyanPlugin.bindsConfig.contains("social")) {
         val list = cyanPlugin.bindsConfig.getStringList("social").toMutableList()
         for ((index, s) in list.withIndex()) {
@@ -98,7 +124,12 @@ fun social(user: User, man: Streamer) {
         PlayList.add(GameHandler(list, 1, "social"))
     }
     Bukkit.getScheduler().runTask(cyanPlugin) {
-        cyanPlugin.server.pluginManager.callEvent(LiveMessageEvent(Join(user) , man))
+        cyanPlugin.server.pluginManager.callEvent(
+            cn.nostmc.pixgame.api.LiveMessageEvent(
+                cn.nostmc.pixgame.api.data.Join(user),
+                man
+            )
+        )
     }
 }
 

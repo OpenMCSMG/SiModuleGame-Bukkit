@@ -9,3 +9,4 @@ pluginManagement {
 rootProject.name = "SiModuleGame-Bukkit"
 include("core")
 include("wikibot")
+include("api")
